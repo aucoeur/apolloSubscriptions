@@ -50,6 +50,22 @@ const channels = [
 ]
 
 const resolvers = {
+  Post: {
+    message: (parent) => {
+      return parent.message
+    },
+    date: (parent) => {
+      return new Date(parent.date).toLocaleDateString()
+    }
+  },
+  Channel: {
+    name: (parent) => {
+      return parent.name
+    },
+    posts: (parent) => {
+      return parent.posts
+    }
+  },
 	Query: {
 		posts: ({ channel }) => {
 			return channels.filter(c => c.name === channel)
